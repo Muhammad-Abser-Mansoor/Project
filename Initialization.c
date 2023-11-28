@@ -11,7 +11,7 @@
 
 // Arguements include the initial array, the randomly chosen coordinates, the random number and dimension of the square matrix
 // Checking columns and rows to see if any column or row collinear to the coordinates has a number equal to the inputted number
-int Checkrowscolumns(int ar[][12],int randposr,int randposc,int num,int length) {
+int Checkrowscolumns(int ar[length][length],int randposr,int randposc,int num,int length) {
     for (int k = 0;k<length;k++) { 
         if (num == ar[randposr][k] || num == ar[k][randposc]) {
            return 0; 
@@ -19,14 +19,8 @@ int Checkrowscolumns(int ar[][12],int randposr,int randposc,int num,int length) 
     }
     return 1;
 }
-/* The above and below checking conditions were an attempt to create a universal checking condition able to work for any valid sudoku board but I was unable
- * to get it to work despite rigorous rechecks and reworks. In the end I decided to rely on Fahad's checking conditions (since I was not obligated to make them)
- * and the initial generation worked fine then so all's well that ends well i guess. i would like to know a way to make this work (I asked GPT and fasih as well
- * when I couldnt solve it but both said that it should work and it dosent).
- */
 
-
-int Checksubblock(int ar[][12],int randposr,int randposc,int num,int sr,int sc) {
+int Checksubblock(int ar[length][length],int randposr,int randposc,int num,int sr,int sc) {
     int srow = sr * (randposr / sr); // sr and sc are the dimensions of the subblocks
     int scolumn = sc * (randposc / sc);
     for (int k = srow;k<srow + sr;k++) { // Now check the subblock that the address belongs to and find if any equal value exists
